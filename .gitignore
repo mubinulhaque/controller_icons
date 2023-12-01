@@ -16,3 +16,10 @@ mono_crash.*.json
 
 # Editors
 .idea/**
+
+# Others
+*.import
+addons/controller_icons/assets/
+addons/controller_icons/example/
+icon.svg
+project.godot

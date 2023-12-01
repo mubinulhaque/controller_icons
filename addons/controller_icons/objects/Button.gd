@@ -2,6 +2,7 @@
 extends Button
 class_name ControllerButton
 
+## Name of the input action that you wish to display
 @export var path : String = "":
 	set(_path):
 		path = _path
@@ -11,15 +12,22 @@ class_name ControllerButton
 			else:
 				icon = ControllerIcons.parse_path(path)
 
+## When set to Keyboard/Mouse or Controller,
+## the object will hide when the opposite input method is used.
 @export_enum("Both", "Keyboard/Mouse", "Controller") var show_only : int = 0:
 	set(_show_only):
 		show_only = _show_only
 		_on_input_type_changed(ControllerIcons._last_input_type)
 
+## When set to other than None,
+## forces the displayed icon to be either Keyboard/Mouse or Controller.
+## Only relevant for input actions, other types of lookup paths are not affected by this.
 @export_enum("None", "Keyboard/Mouse", "Controller") var force_type : int = 0:
 	set(_force_type):
 		force_type = _force_type
 		_on_input_type_changed(ControllerIcons._last_input_type)
+
+@export var controller_icons: ControllerIcons.JoypadIndex
 
 func _ready():
 	ControllerIcons.input_type_changed.connect(_on_input_type_changed)
