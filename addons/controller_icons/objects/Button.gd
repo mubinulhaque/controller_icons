@@ -27,7 +27,8 @@ class_name ControllerButton
 		force_type = _force_type
 		_on_input_type_changed(ControllerIcons._last_input_type)
 
-@export var controller_icons: ControllerIcons.JoypadIndex
+## Which joypad to check for inputs
+@export var joypad_index: ControllerIcons.JoypadIndex
 
 func _ready():
 	ControllerIcons.input_type_changed.connect(_on_input_type_changed)
